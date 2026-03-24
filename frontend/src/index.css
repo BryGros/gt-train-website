@@ -1,0 +1,47 @@
+body {
+  font-family: "Montserrat", "Sans-Serif";
+  --e-global-color-primary: #00b2e3;
+  --e-global-color-secondary: #84d3e5;
+  --e-global-color-text: #54565a;
+  --e-global-color-accent: #ff9e18;
+  margin: 0;
+  padding: 0;
+}
+
+.gt-logo {
+  width: 175px;
+}
+
+.social-bar {
+  background-color: #00b2e3;
+  height: 50px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-right: 25px;
+  gap: 1rem;
+}
+
+.social-bar i {
+  color: white;
+  font-size: 1rem;
+}
+
+.main-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  margin-right: 5rem;
+  align-items: center;
+}
+
+.main-bar i {
+  font-size: 1.5rem;
+}
+
+.menu {
+  display: flex;
+  gap: 2rem;
+  padding: 0 auto;
+}

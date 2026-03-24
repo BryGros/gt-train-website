@@ -25,7 +25,10 @@ export default function Main() {
         setCourseData(data);
         setLoading(false);
       })
-      .catch((err) => {});
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
   };
 
   // Loading element

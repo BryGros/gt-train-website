@@ -2,12 +2,17 @@ export default function Header() {
   return (
     <header className="header-wrap">
       <div className="social-bar">
-        <i className="fa-brands fa-linkedin-in"></i>
-        <i className="fa-brands fa-youtube"></i>
+        <a href="https://www.linkedin.com/company/gideon-taylor">
+          <i className="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.youtube.com/@GideonTaylorConsulting">
+          <i className="fa-brands fa-youtube"></i>
+        </a>
       </div>
       <div className="main-bar">
         <img
-          src="../assets/gideon-taylor-stacked.svg"
+          className="gt-logo"
+          src="./src/assets/gideon-taylor-stacked.svg"
           alt="Gideon Taylor logo"
         />
         <div className="menu">
