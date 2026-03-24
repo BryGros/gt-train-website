@@ -1,13 +1,11 @@
 import { useState } from "react";
 import Main from "./components/Main";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div className="app">
-      <header className="app-header">
-        <h1>Gideon Taylor Training</h1>
-        <p>Build. GROW. Serve.</p>
-      </header>
+      <Header />
       <main>
         <Main />
       </main>
