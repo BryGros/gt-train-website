@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import CourseResults from "./CourseResults";
 
-export default function eFormsCourses() {
+export default function EformsCourses() {
   const [courseData, setCourseData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
