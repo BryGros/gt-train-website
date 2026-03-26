@@ -1,9 +1,12 @@
-body {
-  font-family: "Montserrat", "Sans-Serif";
+:root {
   --e-global-color-primary: #00b2e3;
   --e-global-color-secondary: #84d3e5;
   --e-global-color-text: #54565a;
   --e-global-color-accent: #ff9e18;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -44,4 +47,171 @@ body {
   display: flex;
   gap: 2rem;
   padding: 0 auto;
+}
+
+.courses {
+  padding: 0 3rem;
+}
+
+.title {
+  color: white;
+  margin: 0 0 2rem 1.2rem;
+}
+
+.item-wrapper {
+  border: #54565a 1px solid;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.course-header {
+  background-color: #00b2e3;
+  color: white;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.course-info-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.course-info {
+  padding: 0 5rem 1rem 1.5rem;
+}
+
+.course-info h3 {
+  margin: 0.5rem 0;
+  color: #00a1ce;
+  padding: 0;
+  margin: 0;
+}
+
+hr {
+  background-color: #ff9e18;
+  border: none;
+  height: 2px;
+  width: 7rem;
+  margin: 0.25rem 0 1rem 0;
+  padding: 0;
+}
+
+.reg-btns-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.reg-btns-wrap h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.reg-btns-wrap button {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 15rem;
+}
+
+.ded-btn {
+  padding: 0;
+  margin: 0;
+}
+
+.pps-btn p,
+h3 {
+  padding: 0;
+  margin: 0.25rem;
+}
+
+.reg-cost {
+  font-size: large;
+  font-weight: bold;
+}
+
+.tag-and-sched {
+  display: flex;
+  margin: 0;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.tags-wrap {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem;
+  height: fit-content;
+}
+
+.hans-on {
+  --tag-color: #7561eb;
+}
+.lowcode {
+  --tag-color: #2f8656;
+}
+.dedonly {
+  --tag-color: #ad6501;
+}
+.newnew {
+  --tag-color: white;
+  --font-color: black;
+}
+.peocode {
+  --tag-color: #54565a;
+}
+.seminar {
+  --tag-color: #c94070;
+}
+
+.tag {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  width: fit-content;
+  color: var(--font-color, white);
+  font-size: larger;
+  font-weight: bold;
+  background-color: var(--tag-color);
+}
+
+.lowcode {
+  background-color: #2e8b57;
+}
+
+.schedule-wrap {
+  display: flex;
+  justify-content: left;
+  padding: 1rem;
+  margin: 0;
+  gap: 1rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #d9d8d6;
+}
+
+.schedule-wrap h4 {
+  margin: 0;
+}
+
+.sessions-wrap {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sessions-wrap p {
+  padding: 0;
+  margin: 0;
+}
+
+.sessions-wrap i {
+  padding: 0 5px 0 0;
 }

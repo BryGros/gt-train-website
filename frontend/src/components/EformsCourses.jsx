@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useEffect } from "react";
-export default function Main() {
+import CourseResults from "./CourseResults";
+
+export default function eFormsCourses() {
   const [courseData, setCourseData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [filteredCourses, setFilteredCourses] = useState(courseData);
 
   useEffect(function getCourses() {
     fetchCourseInfo();
@@ -24,6 +27,7 @@ export default function Main() {
       .then((data) => {
         setCourseData(data);
         setLoading(false);
+        setFilteredCourses(data);
       })
       .catch((err) => {
         setError(err.message);
@@ -46,27 +50,7 @@ export default function Main() {
     <div className="courses">
       {loading && loadingElem}
       {error && errorMsg}
-      {courseData.map((course) => {
-        return (
-          <div key={course.id} className="courseCard">
-            <h2>{course.name}</h2>
-            <h3>Who this training is for: {course.wttif}</h3>
-            <h3>Length: {course.length}</h3>
-            <p>{course.descr}</p>
-            <p>
-              <b>Cost: </b>
-            </p>
-            <p>
-              ${course.perSeatCost} per seat for a Currently Scheduled Open
-              Sessions
-            </p>
-            <p>
-              ${course.dedCost} for a Dedicated Session (by request - your
-              company only, up to 8 attendees)
-            </p>
-          </div>
-        );
-      })}
+      <CourseResults courseObject={filteredCourses} />
     </div>
   );
 }

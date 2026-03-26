@@ -1,13 +1,11 @@
-import { useState } from "react";
-import Main from "./components/Main";
 import Header from "./components/Header";
-
+import EformsCourses from "./components/EformsCourses";
 function App() {
   return (
     <div className="app">
       <Header />
       <main>
-        <Main />
+        <EformsCourses />
       </main>
       <footer className="app-footer">
         <p>Contact Us</p>
