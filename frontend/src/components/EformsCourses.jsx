@@ -2,47 +2,15 @@ import { useState } from "react";
 import { useEffect } from "react";
 import CourseResults from "./CourseResults";
 import CourseSearch from "./CourseSearch";
+import getAllCourseData from "../helper-functions/getAllCourses";
+import { monthOrder } from "../data/monthOrder";
 
 export default function EformsCourses() {
-  const [courseData, setCourseData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [filters, setFilters] = useState({
-    courseName: "all",
-    tag: "all",
-    month: "all",
-  });
+  // getAllCourses Hook
+  const { courseData, loading, error, fetchCourseInfo } = getAllCourseData();
 
-  // Fetch course info from Express Server
-  useEffect(function getCourses() {
-    fetchCourseInfo();
-  }, []);
-
-  const fetchCourseInfo = () => {
-    setLoading(true);
-    setError(null);
-
-    fetch("http://localhost:3001/api/courses")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch course data");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setCourseData(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  };
-
-  // Loading element
+  // Loading Elements
   const loadingElem = <div className="loading">Loading course data...</div>;
-
-  // Loading Errors
   const errorMsg = (
     <div className="error">
       <p>Error: {error}</p>
@@ -50,37 +18,14 @@ export default function EformsCourses() {
     </div>
   );
 
-  // Set Month Order
-  const monthOrder = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  // Initiate filters
+  const [filters, setFilters] = useState({
+    courseName: "all",
+    tag: "all",
+    month: "all",
+  });
 
-  // Create list of months for dropdown (based on courseData object)
-  const allMonths = [
-    ...new Set(
-      courseData.flatMap((course) =>
-        (course.sessions?.sessions || []).map((session) =>
-          new Date(session.date).toLocaleString("default", { month: "long" }),
-        ),
-      ),
-    ),
-  ].sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
-
-  // Create list of course names from dropdown based on courseData object
-  const allNames = [...new Set(courseData.map((course) => course.name))];
-
-  // Set Courses Returned Based on Filters
+  // List Courses returned based on current filters
   const filteredCourses = courseData.filter((course) => {
     const matchesName =
       filters.courseName === "all" || course.name === filters.courseName;
@@ -102,7 +47,7 @@ export default function EformsCourses() {
       <CourseSearch
         filters={filters}
         setFilters={setFilters}
-        allMonths={allMonths}
+        filteredResults={filteredCourses}
       />
       {loading && loadingElem}
       {error && errorMsg}

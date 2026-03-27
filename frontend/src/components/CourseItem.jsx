@@ -3,7 +3,9 @@ export default function CourseItem({ course }) {
   const sessionObj = course.sessions;
   const sessionArray = sessionObj.sessions || [];
   const dedicatedOnly = courseTagArray.includes("Dedicated Only");
+  const selfPacedOpt = course?.selfCost;
 
+  // Define Elements
   const courseSchedule = (
     <div className="schedule-wrap">
       <h4>Upcoming Sessions:</h4>
@@ -21,11 +23,32 @@ export default function CourseItem({ course }) {
       </div>
     </div>
   );
+
   const ppsBtn = (
     <button className="pps-btn">
-      <h3>Seat(s)</h3>
-      (in an upcoming session)
-      <p className="reg-cost">${course.perSeatCost}</p>
+      <h3>Scheduled Class</h3>
+      {course.perSeatCost > 2000
+        ? "(get $300 off when you register 30 days in advance)"
+        : "(select class date at checkout)"}
+      <h3 className="reg-cost">
+        {new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+        }).format(course.perSeatCost)}
+      </h3>
+    </button>
+  );
+
+  const selfPacedBtn = (
+    <button className="selfp-btn">
+      <h3>Self-Paced</h3>
+      (Two-week modular training)
+      <h3 className="reg-cost">
+        {new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+        }).format(course.selfCost)}
+      </h3>
     </button>
   );
 
@@ -61,14 +84,16 @@ export default function CourseItem({ course }) {
           <h2>Register for:</h2>
           {!dedicatedOnly && ppsBtn}
           <button className="ded-btn">
-            <b>Dedicated Session</b>
-            <br />
-            <span className="btn-subtext">
-              (for your org only - up to 8 people)
-            </span>
-            <br />
-            <span className="reg-cost">${course.dedCost}</span>
+            <h3>Dedicated Session</h3>
+            (for your org only - up to 8 people)
+            <h3 className="reg-cost">
+              {new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
+              }).format(course.dedCost)}
+            </h3>
           </button>
+          {selfPacedOpt == null ? "" : selfPacedBtn}
         </div>
       </div>
     </div>
